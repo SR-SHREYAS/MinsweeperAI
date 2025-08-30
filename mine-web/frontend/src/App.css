@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.controls {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+select, button {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin: 10px 0;
+}
+
+.board {
+  display: inline-grid;
+  gap: 2px;
+  background: #999;
+  padding: 2px;
+  margin: 20px auto;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.cell:not(.revealed):not(.flagged) {
+  background: #ccc;
+  border: 2px outset #eee;
+}
+
+.cell:not(.revealed):not(.flagged):hover {
+  background: #ddd;
+}
+
+.cell.revealed {
+  border: 1px solid #999;
+  animation: reveal 0.3s ease;
+}
+
+.cell.flagged {
+  background: lightgreen;
+}
+
+@keyframes reveal {
+  from { background: #ccc; transform: scale(0.8); }
+  to { background: white; transform: scale(1); }
+}
+
+.game-message {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  animation: fadeIn 0.5s ease;
+}
+
+.victory {
+  background: rgba(76, 175, 80, 0.9);
+  color: white;
+  animation: 
+    fadeIn 0.5s ease,
+    pulse 1s infinite alternate;
+}
+
+.defeat {
+  background: rgba(244, 67, 54, 0.9);
+  color: white;
+  animation: 
+    fadeIn 0.5s ease,
+    shake 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
